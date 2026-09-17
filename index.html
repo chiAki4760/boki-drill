@@ -250,11 +250,15 @@
   </div>
 
   <!-- 問題データ読み込み -->
-  <details>
-    <summary>⚙️ 新しいストーリー問題を読み込む</summary>
-    <textarea id="json-input" placeholder="JSONコードを貼り付けてください"></textarea>
-    <button type="button" class="btn-submit" style="background:#059669; margin-top:6px;" onclick="loadCustomData()">問題を反映する</button>
+  
+
+    <details>
+    <summary>🎟️ 外部の追加問題データを読み込む (JSON)</summary>
+    <textarea id="json-input" placeholder="AIが作成した問題データ（[ ... ]）をここに貼り付けると、現在のステージを上書きできます"></textarea>
+    <button type="button" class="load-btn" onclick="loadCustomData()">🗝️ 問題データを反映</button>
   </details>
+
+  <span class="reset-link" onclick="forceReset()">※ 画面がおかしいときはここを押して全データを初期化</span>
 </div>
 
 <script>
