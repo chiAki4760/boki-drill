@@ -257,9 +257,21 @@
     <textarea id="json-input" placeholder="AIが作成した問題データ（[ ... ]）をここに貼り付けると、現在のステージを上書きできます"></textarea>
     <button type="button" class="load-btn" onclick="loadCustomData()">🗝️ 問題データを反映</button>
   </details>
+<!-- 問題データ読み込み -->
+<details>
+  <summary>🎟️ 外部の追加問題データを読み込む (JSON)</summary>
+  <textarea id="json-input" placeholder="AIが作成した問題データ（[ ... ]）をここに貼り付けると、現在のステージを上書きできます"></textarea>
+  <button type="button" class="load-btn" onclick="loadCustomData()">🗝️ 問題データを反映</button>
+</details>
 
-  <span class="reset-link" onclick="forceReset()">※ 画面がおかしいときはここを押して全データを初期化</span>
+<!-- ★ここを以下のように書き換えてください -->
+<div style="text-align: center; margin-top: 16px;">
+  <button type="button" class="reset-link" onclick="forceReset()" style="background: none; border: none; color: #94a3b8; font-size: 0.75rem; text-decoration: underline; cursor: pointer;">
+    ※ 画面がおかしいときはここを押して全データを初期化
+  </button>
 </div>
+
+
 
 <script>
 const defaultData = [
@@ -477,6 +489,19 @@ function clearSavedProgress() {
   localStorage.removeItem("boki_wrong_list");
   localStorage.removeItem("boki_is_review");
 }
+  /* =========================================================
+   全データ強制初期化（Force Reset）
+========================================================= */
+function forceReset() {
+  if (confirm("保存されている学習データや進行状況をすべて消去して、最初の状態に戻しますか？")) {
+    // 保存されているすべてのアプリ内データを削除
+    localStorage.clear();
+    alert("データを初期化しました。ページを再読み込みします。");
+    // ページを再読み込みしてまっさらな状態で立ち上げる
+    location.reload();
+  }
+}
+
 window.onload = init;
 </script>
 
