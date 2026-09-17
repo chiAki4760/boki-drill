@@ -451,7 +451,28 @@ function loadCustomData() {
     alert("JSONの形式が正しくありません。正しいデータを貼り付けてください。");
   }
 }
+// 最初からやり直す（通常モードリセット）
+function startFreshQuiz() {
+  clearSavedProgress();
+  isReviewMode = false;
+  activeQuiz = [...baseQuestions];
+  wrongQuestions = [];
+  currentIndex = 0;
+  correctCount = 0;
+  answeredSet.clear();
 
+  document.getElementById("quizArea").style.display = "block";
+  document.getElementById("clearArea").style.display = "none";
+  loadQuestion(0);
+}
+
+// 進捗ローカルストレージの消去
+function clearSavedProgress() {
+  localStorage.removeItem("boki_current_idx");
+  localStorage.removeItem("boki_correct_cnt");
+  localStorage.removeItem("boki_wrong_list");
+  localStorage.removeItem("boki_is_review");
+}
 window.onload = init;
 </script>
 
